@@ -1,0 +1,50 @@
+# Permissive mode: allow installs and network with confirm
+thresholds:
+  delete_count: 100
+  modify_count: 400
+protected_paths:
+  - /
+  - /etc
+  - ~/.ssh
+  - .git
+allow_commands:
+  - ls
+  - cat
+  - rg
+  - grep
+  - pwd
+  - whoami
+  - git status
+  - git diff
+  - git log
+block_commands:
+  - mkfs
+  - fdisk
+  - wipefs
+confirm_commands:
+  - rm
+  - rmdir
+  - mv
+  - find
+  - git clean
+  - git reset
+  - npm
+  - pip
+network_egress:
+  - curl
+  - wget
+  - scp
+package_managers:
+  - npm
+  - pnpm
+  - yarn
+  - pip
+  - pip3
+arbiter:
+  enabled: false
+  provider: ""
+  model: ""
+  api_key_env: ""
+options:
+  allow_outside_repo: true
+  require_clean_tree_for_break_glass: false

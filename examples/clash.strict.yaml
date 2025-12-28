@@ -1,0 +1,42 @@
+# Strict mode: disallow installs and all network egress, require clean tree for break-glass
+thresholds:
+  delete_count: 25
+  modify_count: 100
+protected_paths:
+  - /
+  - /etc
+  - ~/.ssh
+  - ~/.config
+  - .git
+allow_commands:
+  - ls
+  - cat
+  - rg
+  - grep
+  - pwd
+  - git status
+  - git diff
+block_commands:
+  - mkfs
+  - fdisk
+  - wipefs
+  - dd
+  - shutdown
+  - reboot
+confirm_commands:
+  - rm
+  - rmdir
+  - mv
+  - find
+  - git clean
+  - git reset
+network_egress: []
+package_managers: []
+arbiter:
+  enabled: false
+  provider: ""
+  model: ""
+  api_key_env: ""
+options:
+  allow_outside_repo: false
+  require_clean_tree_for_break_glass: true
