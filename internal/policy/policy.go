@@ -9,7 +9,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-//go:embed ../../configs/default_policy.yaml
+//go:embed default_policy.yaml
 var defaultPolicyData []byte
 
 // Thresholds controls preview and risk limits.
