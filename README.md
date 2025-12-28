@@ -1,4 +1,6 @@
 # CLASH — Command Line Agent Safety Harness
+[![CI](https://github.com/dickymoore/CLASH/actions/workflows/ci.yml/badge.svg)](https://github.com/dickymoore/CLASH/actions/workflows/ci.yml)
+[![Go](https://img.shields.io/badge/Go-1.21+-blue)](https://go.dev/)
 
 CLASH is a universal chokepoint for agent-initiated command execution. It enforces an argument-aware policy ladder (BLOCK → ALLOW → CONFIRM → optional arbiter → break-glass) so LLM CLIs can act autonomously without sacrificing safety.
 
@@ -55,7 +57,21 @@ CLASH mitigates common destructive commands but is not a sandbox. Interpreter on
 
 ## Tests & CI
 - Unit and golden tests in `internal/...`
-- GitHub Actions workflow runs `go vet` and `go test ./...`
+- GitHub Actions workflow runs `go vet` and `go test ./...` (badge above reflects status)
+
+## Development
+- Requirements: Go 1.21+, git.
+- Install deps & verify: `go mod tidy && go vet ./... && go test ./...`
+- Build locally: `go build -o clash ./cmd/clash`
+
+## Contributing
+- Issues and PRs welcome; please include reproduction steps for bugs.
+- Before sending a PR, run the CI commands above and keep changes policy-aware.
+- For risky changes (runner/policy), add or update tests under `internal/...`.
+
+## Security / responsible use
+- CLASH reduces risk but is not a sandbox; review `docs/threat-model.md` before production use.
+- Report security concerns privately via GitHub security advisories or direct contact (open an issue requesting contact details if needed).
 
 ## Quick demo session
 ```

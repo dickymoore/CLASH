@@ -1,0 +1,80 @@
+thresholds:
+  delete_count: 50
+  modify_count: 200
+  preview_sample: 20
+
+protected_paths:
+  - /
+  - /etc
+  - /usr
+  - /var
+  - /bin
+  - /sbin
+  - /opt
+  - ~/.ssh
+  - ~/.aws
+  - ~/.config
+  - $HOME
+  - .git
+  - .env
+  - .env.local
+
+allow_commands:
+  - ls
+  - cat
+  - rg
+  - grep
+  - pwd
+  - whoami
+  - git status
+  - git diff
+  - git log
+  - git show
+  - git branch
+  - echo
+
+block_commands:
+  - mkfs
+  - fdisk
+  - wipefs
+  - shutdown
+  - reboot
+  - dd
+
+confirm_commands:
+  - rm
+  - rmdir
+  - mv
+  - chmod
+  - chown
+  - find
+  - rsync
+  - git clean
+  - git checkout
+  - git restore
+  - git reset
+
+network_egress:
+  - curl
+  - wget
+  - scp
+  - rsync
+
+package_managers:
+  - npm
+  - pnpm
+  - yarn
+  - pip
+  - pip3
+  - brew
+  - apt
+
+arbiter:
+  enabled: false
+  provider: ""
+  model: ""
+  api_key_env: ""
+
+options:
+  allow_outside_repo: false
+  require_clean_tree_for_break_glass: false
